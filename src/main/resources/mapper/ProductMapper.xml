@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baidu.longjt.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.baidu.longjt.domain.po.Product">
+    <!--@mbg.generated-->
+    <!--@Table product-->
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sub_title" jdbcType="VARCHAR" property="subTitle" />
+    <result column="product_pic" jdbcType="VARCHAR" property="productPic" />
+    <result column="orignal_price" jdbcType="DECIMAL" property="orignalPrice" />
+    <result column="promote_price" jdbcType="DECIMAL" property="promotePrice" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    pid, `name`, sub_title, product_pic, orignal_price, promote_price, stock, cid, create_date
+  </sql>
+    <update id="updateStockById">
+        UPDATE product
+        SET stock=#{stock}
+        WHERE pid=#{pid}
+    </update>
+</mapper>

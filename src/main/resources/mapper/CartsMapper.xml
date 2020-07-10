@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baidu.longjt.mapper.CartsMapper">
+  <resultMap id="BaseResultMap" type="com.baidu.longjt.domain.po.Carts">
+    <!--@mbg.generated-->
+    <!--@Table carts-->
+    <id column="cart_id" jdbcType="INTEGER" property="cartId" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <resultMap id="DtoResultMap" type="com.baidu.longjt.domain.dto.CartsDto" extends="BaseResultMap">
+    <association property="product" javaType="com.baidu.longjt.domain.po.Product" resultMap="com.baidu.longjt.mapper.ProductMapper.BaseResultMap"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    cart_id, member_id, product_id, quantity, `status`, create_date, update_date
+  </sql>
+  <select id="selectAllCarts" resultType="com.baidu.longjt.domain.bo.CartsBo">
+
+  </select>
+  <select id="selectById" resultMap="DtoResultMap">
+    SELECT c.cart_id,c.quantity,c.product_id,p.promote_price,p.stock
+    FROM carts c LEFT JOIN product p ON c.product_id = p.pid
+    WHERE member_id=#{member}
+  </select>
+</mapper>

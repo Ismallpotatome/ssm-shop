@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baidu.longjt.mapper.ShopOrderMapper">
+  <resultMap id="BaseResultMap" type="com.baidu.longjt.domain.po.ShopOrder">
+    <!--@mbg.generated-->
+    <!--@Table shop_order-->
+    <id column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    order_id, order_num, member_id, create_time, `status`, total_amount
+  </sql>
+</mapper>
