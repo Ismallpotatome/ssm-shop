@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -49,7 +50,15 @@ public class OrderServiceImpl implements OrderService {
              */
             cartsDto.getProduct().setStock(cartsDto.getProduct().getStock()-cartsDto.getQuantity());
             productMapper.updateStockById(cartsDto.getProductId(),cartsDto.getProduct().getStock());
+            /**
+             * TotalPerPrice单个商品的总价
+             * 每次循环加入订单总价
+             */
+            BigDecimal quantity = new BigDecimal(cartsDto.getQuantity().toString());
+            BigDecimal price = new BigDecimal(cartsDto.getProduct().getPromotePrice().toString());
+            BigDecimal totalPerPrice = quantity.multiply(price);
 
+            orderDto.setTotalAmount(orderDto.getTotalAmount().add(totalPerPrice));
 
         }
         orderDto.setCartsDtos(cartsDtos);
