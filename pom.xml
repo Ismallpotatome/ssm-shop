@@ -23,7 +23,7 @@
         <mysql.version>8.0.20</mysql.version>
         <druid.version>1.1.23</druid.version>
         <lombok.version>1.18.12</lombok.version>
-        <jackson.version>2.11.1</jackson.version>
+        <jackson.version>2.12.7.1</jackson.version>
         <servlet.version>4.0.1</servlet.version>
     </properties>
 
